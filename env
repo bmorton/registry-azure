@@ -1,0 +1,23 @@
+#!/bin/bash -l
+export DOCKER_HOST_IP=`/sbin/ip route | awk '/default/ { print $3 }'`
+export ETCDCTL_PEERS="http://${DOCKER_HOST_IP}:4001/"
+
+export SETTINGS_FLAVOR=azureblob
+
+if [ -z "$AZURE_STORAGE_ACCOUNT_NAME" ]; then
+  echo "Setting AZURE_STORAGE_ACCOUNT_NAME via etcd..."
+  export AZURE_STORAGE_ACCOUNT_NAME=`etcdctl get /services/registry/AZURE_STORAGE_ACCOUNT_NAME`
+fi
+
+if [ -z "$AZURE_STORAGE_ACCOUNT_KEY" ]; then
+  echo "Setting AZURE_STORAGE_ACCOUNT_KEY via etcd..."
+  export AZURE_STORAGE_ACCOUNT_KEY=`etcdctl get /services/registry/AZURE_STORAGE_ACCOUNT_KEY`
+fi
+
+if [ -z "$AZURE_STORAGE_CONTAINER" ]; then
+  echo "Setting AZURE_STORAGE_CONTAINER via etcd..."
+  export AZURE_STORAGE_CONTAINER=`etcdctl get /services/registry/AZURE_STORAGE_CONTAINER`
+fi
+
+# Execute the commands passed to this script
+$@
