@@ -2,7 +2,7 @@ FROM registry
 RUN pip install docker-registry-driver-azureblob
 
 # Install etcd client
-ENV ETCD_VERSION v2.0.0-rc.1
+ENV ETCD_VERSION v2.0.8
 ADD https://github.com/coreos/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz /tmp/
 RUN tar -xvzf /tmp/etcd-${ETCD_VERSION}-linux-amd64.tar.gz -C /tmp
 RUN mv /tmp/etcd-${ETCD_VERSION}-linux-amd64/etcdctl /bin/etcdctl
