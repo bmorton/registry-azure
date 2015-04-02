@@ -1,4 +1,4 @@
-FROM registry:0.8.1
+FROM registry:0.9.0
 MAINTAINER Brian Morton "bmorton@yammer-inc.com"
 
 RUN apt-get -y update && apt-get -y install libffi-dev libssl-dev
