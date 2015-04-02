@@ -1,4 +1,4 @@
-FROM registry
+FROM registry:0.8.1
 MAINTAINER Brian Morton "bmorton@yammer-inc.com"
 
 RUN apt-get -y update && apt-get -y install libffi-dev
