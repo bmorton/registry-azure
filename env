@@ -4,8 +4,9 @@ export ETCDCTL_PEERS="http://${DOCKER_HOST_IP}:4001/"
 
 export SETTINGS_FLAVOR=azureblob
 
-if [ -z "$AZURE_STORAGE_ACCOUNT_NAME" ]; then
+if [ -z "$ETCD_NAMESPACE" ]; then
   export ETCD_NAMESPACE="/services"
+fi
 
 if [ -z "$AZURE_STORAGE_ACCOUNT_NAME" ]; then
   echo "Setting AZURE_STORAGE_ACCOUNT_NAME via etcd..."
