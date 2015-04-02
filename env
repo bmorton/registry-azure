@@ -1,7 +1,4 @@
 #!/bin/bash -l
-export DOCKER_HOST_IP=`/sbin/ip route | awk '/default/ { print $3 }'`
-export ETCDCTL_PEERS="http://${DOCKER_HOST_IP}:4001/"
-
 export SETTINGS_FLAVOR=azureblob
 
 if [ -z "$ETCD_NAMESPACE" ]; then
