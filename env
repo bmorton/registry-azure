@@ -20,17 +20,5 @@ if [ -z "$AZURE_STORAGE_CONTAINER" ]; then
   export AZURE_STORAGE_CONTAINER=`etcdctl get $ETCD_NAMESPACE/registry/AZURE_STORAGE_CONTAINER`
 fi
 
-export CACHE_REDIS_DB=0
-
-if [ -z "$CACHE_REDIS_HOST" ]; then
-  echo "Setting CACHE_REDIS_HOST via etcd..."
-  export CACHE_REDIS_HOST=`etcdctl get $ETCD_NAMESPACE/registry/CACHE_REDIS_HOST`
-fi
-
-if [ -z "$CACHE_REDIS_PORT" ]; then
-  echo "Setting CACHE_REDIS_PORT via etcd..."
-  export CACHE_REDIS_PORT=`etcdctl get $ETCD_NAMESPACE/registry/CACHE_REDIS_PORT`
-fi
-
 # Execute the commands passed to this script
 $@
