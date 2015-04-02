@@ -1,4 +1,7 @@
 FROM registry
+MAINTAINER Brian Morton "bmorton@yammer-inc.com"
+
+RUN apt-get -y update && apt-get -y install libffi-dev
 RUN pip install docker-registry-driver-azureblob
 
 # Install etcd client
